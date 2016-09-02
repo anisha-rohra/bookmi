@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<section id="search-users-section">
+   <h3>Results for {{ search.name }}</h3>
+
+   {% for user in users %}
+      {% include "search_users_result.html" %}
+   {% else %}
+      <li>Your list is empty.</li>
+   {% endfor %}
+
+</section>
+{% endblock %}

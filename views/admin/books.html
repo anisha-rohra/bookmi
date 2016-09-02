@@ -1,0 +1,31 @@
+{% extends "admin/layout.html" %}
+
+{% block content %}
+
+<section id="books-admin-section">
+<form>
+<input type="hidden" name="_csrf" value="{{ csrfToken }}">
+  <input type="search" class="search-books" placeholder="Book / Author" required>
+  <input type="submit" class="submit" value="Search Books">
+  </form>
+
+  <div class="left-col">
+    <h3 id="recently-commented">Recently Commented</h3>
+    {% for book in recent.books %}
+       {% include "search_books_result.html" %}
+    {% else %}
+       <li>No books have been recently used.</li>
+    {% endfor %}
+  </div>
+
+  <div class="right-col">
+    <h3 id="most-popular">Most Popular</h3>
+    {% for book in popular.books %}
+       {% include "search_books_result.html" %}
+    {% else %}
+       <li>No popular books.</li>
+    {% endfor %}
+  </div>
+</section>
+
+{% endblock %}

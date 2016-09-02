@@ -1,0 +1,503 @@
+/* Adapted from main_style.css - copied on 07/18 */
+
+/* Larger Tags Details */
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  color:  #333333;
+}
+
+header {
+  background-image: url("../images/backgroundcolor.png");
+  background-size: cover;
+}
+
+#title:hover {
+  color: #C94A4A;
+}
+
+#back {
+  background-color: rgba(141,105,92,0.6);
+  padding-top: 140px;
+  padding-bottom: 90px;
+}
+
+nav {
+  font-family: 'PT Sans', sans-serif;
+  font-size: 1em;
+  background-color: white;
+  color: black;
+  text-align: center;
+  width: 100%;
+  position: fixed;
+  z-index: 1000;
+}
+
+main {
+  margin-left: 10%;
+  margin-right: 10%;
+  font-family: 'PT Sans', sans-serif;
+  font-size: 1.2em;
+}
+
+/* Headings Details */
+h1 {
+  font-family: 'Gentium Book Basic', serif;
+  font-size: 6em;
+  text-align: center;
+  color: white;
+}
+
+h2 {
+  font-family: 'Gentium Book Basic', serif;
+  font-size: 2.5em;
+  text-align: center;
+  color:  #333333;
+}
+
+h3 {
+  font-size: 1.5em;
+}
+
+/* Margin Details */
+.rec {
+  margin-left: 8%;
+  margin-right: 8%;
+}
+
+#about_us, #user-admin, #books-admin {
+  margin-right: 5%;
+}
+
+#community {
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+#profile {
+  margin-right: 5%;
+}
+
+#inbox {
+  margin-right: 5%;
+}
+
+img.profile_h3 {
+  margin-top: 3%;
+}
+
+.search-books, .search-admin {
+  margin-top: 2%;
+}
+
+/* Standard Tags Details */
+li {
+  list-style-type: none;
+  display: inline;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #C94A4A;
+}
+
+button {
+  display: block;
+  font-size: 1em;
+  font-family: 'PT Sans', sans-serif;
+  background-color: #808080;
+  border: none;
+  color: white;
+  padding: 4px 8px;
+  text-align: center;
+  text-decoration: none;
+}
+
+button:hover {
+  background-color: #C94A4A;
+}
+
+.response-buttons {
+  display: inline;
+}
+
+#search {
+  width: 10%;
+}
+
+/* Forms Details */
+.contact {
+  display: block;
+  margin: 0 auto;
+  width: 250px;
+  margin-bottom: 1%;
+  font-family: 'PT Sans', sans-serif;
+  font-size: 1.1em;
+}
+
+#user_search, #user_submit, .search-books, .search-admin {
+  display: inline-block;
+  margin-bottom: 1%;
+  font-family: 'PT Sans', sans-serif;
+  font-size: 1.25em;
+}
+
+input[type=submit] {
+  /*width: 100px;*/
+  font-family: 'PT Sans', sans-serif;
+  font-size: 1.1em;
+  background-color: #808080;
+  border: none;
+  color: white;
+  padding: 4px 8px;
+  text-align: center;
+  text-decoration: none;
+}
+
+input[type="submit"]:hover {
+  background-color: #C94A4A;
+}
+
+#search-books-form {
+  display: inline;
+}
+
+.controls {
+  display: inline;
+  position: absolute;
+  right: 0;
+}
+
+.menu-form {
+  display: inline;
+  padding-right: 15px;
+}
+
+.add-book-form {
+  display: block;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+/* Dropdown Menu Details */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: white;
+  width: 350%;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  padding-right: 50%;
+}
+
+.dropdown-content a:hover {
+  background-color: white;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+li.sub {
+  list-style-type: none;
+  margin-top: 10%;
+  margin-bottom: 10%;
+}
+
+a.sub {
+  text-decoration: none;
+  color: black;
+  display: block;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.sub:hover {
+  color: #C94A4A;
+}
+
+/* Table details */
+table {
+  margin-top: 3%;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+th {
+  background-color: #AF4B4B;
+  color: white;
+}
+
+/* Book details */
+#recom-books img {
+  max-width: 150px;
+}
+
+#book-details {
+  display: block;
+}
+
+#book-details tr {
+  display: block;
+}
+
+#book-details td {
+  display: inline-block;
+}
+
+table a {
+  text-decoration: underline;
+}
+
+/* Admin Page */
+table#ana-table {
+  width: 60%;
+  margin: 0 auto;
+  margin-top: 50px;
+}
+
+div.left-col {
+  width: 600px;
+  float: left;
+  position: absolute;
+}
+
+div.right-col {
+  margin-left: 600px;
+}
+
+h3#new-users {
+  margin-left: 200px;
+}
+
+h3#active-users {
+  margin-left:170px;
+}
+
+h3#recently-commented {
+  margin-left: 112px;
+}
+
+h3#most-popular {
+  margin-left: 167px;
+}
+
+.star {
+  width: 10%;
+  height: auto;
+}
+
+.books {
+  width: 30%;
+  height: auto;
+}
+
+#other-profile-right-col {
+  margin-top: 3%;
+}
+
+#profile_header {
+  margin-bottom: 0;
+}
+
+.div {
+  display: inline-block;
+  width: 128px;
+  height: 192px;
+}
+
+/* Style for next/prev buttons*/
+.next, .prev {
+  margin-top: 10px;
+  display: inline-block;
+}
+
+.prev {
+  margin-right: 10px;
+}
+
+.next:hover, .prev:hover {
+  text-decoration: underline;
+}
+
+/* Comment admin */
+.cmt-date {
+  min-width: 120px;
+}
+
+.cmt-del {
+  text-align: center;
+}
+
+.cmt-del input[type=checkbox] {
+  cursor: pointer;
+  height: 18px;
+  width: 18px;
+}
+
+#review-table {
+  margin-top: 1%;
+}
+
+#del-rev-submit {
+  float: left;
+}
+/* Header Center */
+.header-center {
+  text-align: center;
+}
+
+@media screen and (max-width: 1050px) {
+  /* Hide things from user view */
+  .admin-user-location, .admin-user-gender, .admin-user-id,
+  .admin-user-age, .admin-user-loc, .admin-user-joined {
+    display: none;
+  }
+
+  main {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+  /* Break long lines */
+  .admin-user-email {
+    max-width: 250px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+
+
+}
+@media screen and (max-width: 800px) {
+  main {
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+
+  #rev-form {
+    display: inline-block;
+  }
+
+  /* Change to linear table*/
+  #review-table th {
+    display: none;
+  }
+
+  table#review-table, #review-table thead, #review-table tbody, #review-table td, #review-table tr {
+    display: inline-block;
+  }
+  #review-table tr {
+    width: 100%;
+  }
+
+  #cmt-del {
+
+  }
+  #cmt-date {
+
+  }
+  #cmt-user {
+
+  }
+  #cmt-isbn {
+    text-overflow: ellipsis;
+  }
+  #review-table td #cmt-msg {
+    clear:both;
+  }
+  #cmt-rating {
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .admin-user-name {
+    display: none;
+  }
+  .admin-user-email {
+    max-width: 150px;
+  }
+
+  table#review-table {
+    border-collapse: collapse;
+  }
+
+  table#review-table, #review-table thead, #review-table tbody, #review-table td, #review-table tr {
+    display: block;
+  }
+  td.cmt-del, td.cmt-date, td.cmt-user, td.cmt-isbn, td.cmt-rating {
+    /* Behave  like a "row" */
+    border: none;
+    border-bottom: solid 1px #fff
+    position: relative;
+    height: auto;
+  }
+
+  #review-table tr {
+    width: 100%;
+  }
+
+  .cmt-del {
+    text-align: left;
+  }
+
+  td.cmt-del:before {
+    content: "Delete:";
+    float: left;
+    margin-right: 10px;
+  }
+  td.cmt-date:before {
+    content: "Date:";
+    float: left;
+    margin-right: 10px;
+  }
+  td.cmt-user:before {
+    content: "User:";
+    float: left;
+    margin-right: 10px;
+  }
+  td.cmt-isbn:before {
+    text-overflow: ellipsis;
+    content: "ISBN:";
+    float: left;
+    margin-right: 10px;
+  }
+  #review-table td .cmt-msg {
+  display: block;
+  }
+  td.cmt-rating:before {
+    content: "Rating:";
+    float: left;
+    margin-right: 10px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .admin-user-email {
+    display:none;
+  }
+  main {
+    font-family: 'PT Sans', sans-serif;
+    font-size: 1.05em;
+    margin-left: 0%;
+    margin-right: 0%;
+    padding: 2% 2% 2% 2%;
+  }
+}

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://code.jquery.com/jquery-3.1.0.min.js" rel="script" type="text/javascript" defer></script>
+  <script src="/assets/js/script.js" type="text/javascript" defer></script>
+  <link href="/assets/css/main_style.css" rel="stylesheet" type="text/css">
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <meta name="google-signin-client_id" content="816980302628-7fjmasuvca30gttjarcs4bub7k7t8gtf.apps.googleusercontent.com">
+  <link href='https://fonts.googleapis.com/css?family=Gentium+Book+Basic:700,400|PT+Sans:400,400italic,700' rel='stylesheet' type='text/css'>
+  <meta content="{{ csrfToken }}" name="csrf-token" />
+  <title>{{ title }}</title>
+
+</head>
+<body>
+  {% include "menu.html" %}
+
+  <!--<header>
+    <div id="back">
+      <a href="/recommendations"><h1 id="title">Bookmi</h1></a>
+    </div>
+  </header>-->
+
+  <div id="background">
+    <main>
+
+      {% block content %}  {% endblock %}
+
+    </main>
+  </div>
+
+  <footer>
+
+  </footer>
+
+</body>
+</html>

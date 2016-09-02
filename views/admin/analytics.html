@@ -1,0 +1,84 @@
+{% extends "admin/layout.html" %}
+
+{% block content %}
+<section id="analytics">
+  <h3 class="header-center" id="analytics">Analytics</h3>
+  <table id="ana-table">
+    <tr>
+      <td>Number of users</td>
+      <td>{{ users }}</td>
+    </tr>
+    <tr>
+      <td>Number of books exchanged</td>
+      <td>{{ exchanged }}</td>
+    </tr>
+    <tr>
+      <td>Number of reviews</td>
+      <td>{{ comments }}</td>
+    </tr>
+    <tr>
+      <td>Number of follows</td>
+      <td>{{ follows }}</td>
+    </tr>
+    <tr>
+      <td>Number of books wanted</td>
+      <td>{{ wishes }}</td>
+    </tr>
+    <tr>
+      <td>Number of books offered</td>
+      <td>{{ owns }}</td>
+    </tr>
+  </table>
+
+</section>
+
+<section>
+  <table id="new-users">
+  <h3 class="center-header">New users</h3>
+  <thead>
+    <th>Username</th>
+    <th>Join Date</th>
+    </thead>
+  <tbody>
+  {% for user in r_users %}
+    <tr>
+      <td><a href="/admin/edit-user?id={{ user.id }}">{{ user.username }}</a></td>
+      <td>{{ user.created }}</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+  </table>
+  </section>
+
+<section>
+  <h3 class="center-header">New reviews</h3>
+  <table id="review-table">
+  <thead>
+    <th>Date</th>
+    <th>Username</th>
+    <th>Book</th>
+    <th>Review</th>
+    </thead>
+  <tbody>
+  {% if reviews.length > 0 %}
+  {% for rev in reviews %}
+    <tr>
+      <td class="cmt-date">{{ rev.comment_date }}</td>
+      <td class="cmt-user"><a href="/admin/edit-user?search={{ rev.username }}">{{ rev.username }}</td>
+      <td class="cmt-isbn"><a href="/books/{{ rev.book }}">{{ rev.book }}</td>
+      <td class="cmt-msg">{{ rev.message }}</td>
+    </tr>
+  {% endfor %}
+  {% else %}
+  <tr><td>
+  <p>No recent reviews found</p>
+  </td>
+  </tr>
+  {% endif %}
+  </tbody>
+  </table>
+  </section>
+
+
+
+{% endblock %}

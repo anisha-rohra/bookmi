@@ -1,0 +1,7 @@
+Host: ec2-54-243-47-83.compute-1.amazonaws.com
+Database: d2jl3gj15vn53e
+User: ujjikxvfoeetmy
+Password: 9cebcbMX6DYH_S6LvM0sm6utUs
+port:5432
+
+Connection URL: postgres://ujjikxvfoeetmy:9cebcbMX6DYH_S6LvM0sm6utUs@ec2-54-243-47-83.compute-1.amazonaws.com:5432/d2jl3gj15vn53e

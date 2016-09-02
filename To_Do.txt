@@ -1,0 +1,122 @@
+NEW TO DO:
+
+	******EVERYONE MAKE YOUR OWN PAGE RESPONSIVE (except nav/tables)***********
+	******AND ADD COMMENTS + LINES < 80 CHARACTERS****************************
+
+	Nick:
+	- Architecture in report
+	- Feed sql
+
+	Gongcheng:
+	- No null password
+	- security thing
+	- responsive design
+	- testing
+	- write about security and testing in report
+
+	Anisha:
+	- Readme.pdf
+	- Styling requests and show condition (DONE)
+	- Search users (DONE)
+	- About us
+	- Feed (DONE EXCEPT STYLING)
+	- Request notifications (DONE)
+
+	Shannon:
+	- responsive design & nav bar & tables
+	- Recommendations
+	- measures taken to improve web app in report
+	- write about enhancements
+	- styling followers
+
+To Do:
+	Nick:
+	- Database (set up the tables, heroku etc.)
+	- Recommendations
+
+
+	Gongcheng:
+	- Login/ create new account (including google/fb stuff)
+		- can create
+		- can login
+		- can signout
+		- usernames limited to 20 chars
+		- google
+		- signin redirects to previous page
+		- forced signin
+		- Redirect to about if user just signed up
+
+	- My profile (edit personal info etc. and make it look good)
+		- Can change info
+		- Doesn't look good but works
+
+	- Rate/ comment on books
+		- Can review
+		- Can see reviews
+
+
+	- My profile (edit personal info etc. and make it look good)
+		- Can change info
+		- Doesn't look good but works
+		- Upload picture
+		- Limit file size for picture on server
+
+	- Admin (delete users/reviews, edit user info etc.)
+		- Admin routes separated
+		- Admin has own sign in page
+		- Admin can see list of users
+		- Admin can change profile
+		- Admin can change passwords
+		- User info sorted by id
+		- Admin can delete users
+		- Can see reviews
+		- Can search reviews
+		- Can Delete reviews
+
+	- Final stuff
+	DONE:
+		- Responsive design on admin pages + login
+		- Remove facebook
+		- Implement CSRF
+		- Write security report
+	TODO:
+		- Test cases using Mocha
+
+
+
+	Anisha:
+	- View other users’ profile
+		- Add user comments
+		- Add followers
+	- Request book
+		- Make buttons work
+		- Update and show the right message
+		- Do something if they've both accepted
+		- Check if requestor actually owns the book they claim to
+	- Rate the exchange
+	- Search users
+
+
+	Shannon:
+	- Add/ delete book to a list
+	- Search books
+	- Display book details
+	- Inbox (read/send messages)
+	TO DO:
+	- Notifications for new messages
+	- Follow/unfollow users (also update community page)
+
+
+To Do Later:
+	- About Us / What is Bookmi (Anisha)
+	- Security (Gongchen, Nick)
+	- Feed (Database: Nick, Display: Anisha)
+	- Test cases (EVERYONE just test your code)
+	- Unittesting (EVERYONE with Mocha)
+	- Styling (EVERYONE)
+
+
+Not Needed Unless Bored:
+	- Add google id to users table
+	- Implement FB signin
+	- Flag/Report Comments

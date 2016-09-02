@@ -1,0 +1,41 @@
+{
+  "name": "a4",
+  "version": "1.0.0",
+  "description": "Bookmi",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gcyao/a4.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gcyao/a4/issues"
+  },
+  "dependencies": {
+    "async": "^2.0.0",
+    "bcryptjs": "^2.3.0",
+    "body-parser": "^1.15.2",
+    "chai": "^3.5.0",
+    "compression": "^1.6.2",
+    "cookie-parser": "^1.4.3",
+    "csurf": "^1.9.0",
+    "ejs": "2.3.3",
+    "express": "4.13.3",
+    "express-session": "^1.14.0",
+    "file-type": "^3.8.0",
+    "mocha": "^2.5.3",
+    "multer": "^1.1.0",
+    "nunjucks": "^2.4.2",
+    "pg": "4.x",
+    "read-chunk": "^2.0.0",
+    "request": "^2.73.0",
+    "validator": "^5.5.0"
+  },
+  "homepage": "https://github.com/gcyao/a4#readme",
+  "devDependencies": {}
+}

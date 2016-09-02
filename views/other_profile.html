@@ -1,0 +1,173 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+  <section id="profile_section">
+
+    <h2 id="profile_header">{{ user.firstname }} {{ user.lastname }}</h2>
+
+    {% if user.profile_pic.length %}
+      <img class="profile_h3" id="profile_picture" width="100px" height="100px" src="{{ user.profile_pic }}" class="profile_pics">
+    {% else %}
+      <img class="profile_h3" id="profile_picture" width="100px" height="100px" src="assets/images/profile_pic.png">
+    {% endif %}
+
+    <!--Display unfollow button if user already follows this other user.
+      Otherwise display follow button-->
+    {% if following %}
+      <form action="/unfollow/{{ user.id }}" method="post">
+        <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+        <input class="follow-button" type="submit" value="Unfollow">
+      </form>
+    {% else %}
+      <form action="/follow/{{ user.id }}" method="post">
+        <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+        <input class="follow-button" type="submit" value="Follow">
+      </form>
+    {% endif %}
+
+     <table>
+      <tr>
+        <th>Username</th>
+        <td>{{ user.username }}</td>
+      </tr>
+      <tr>
+        <th>Email</th>
+        <td>{{ user.email }}</td>
+      </tr>
+      <tr>
+        <th>Location</th>
+        <td>{{ user.location }}</td>
+      </tr>
+      <tr>
+        <th>Age</th>
+        <td>{{ user.age }}</td>
+      </tr>
+      <tr>
+        <th>Gender</th>
+        <td>{{ user.gender }}</td>
+      </tr>
+      <tr>
+        <th>Books Swaped</th>
+        <td>{{ books }}</td>
+      </tr>
+      <tr>
+        <th>Followers</th>
+        <td>{{ follows }}</td>
+      </tr>
+      <tr>
+        <th>Rating</th>
+        <td><div id="div-profile" alt="{{ rating }}"></div></td>
+      </tr>
+      <tr>
+        <th>Number of Ratings</th>
+        <td>{{ numRating }}</td>
+      </tr>
+    </table>
+
+    <!--Section follow-sec to apply the sames style as the sections
+    seen on community page-->
+    <section class="follow-sec">
+    <h3>Swap A Book With {{ user.username }}!</h3>
+    <small>Tip: Choose a book you own from their Wish List and a book you want from their Exchange List.</small>
+    <form id="request-form" class="request-books" action="/user{{ user.id }}" method="post">
+    <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+    <input type="submit" value="Request" class="want-book" id="submit-want"><br>
+    <input type='hidden' name='ownBook' id='own-chosen'>
+    <input type='hidden' name='wantBook' id='want-chosen'>
+    {% if error %}
+      <p class="error">You must select one book from the "Wish" collection and one book from the "Own" collection before making a request.</p>
+    {% endif %}
+
+      <div class="left-col" id="other-profile-left-col">
+        <h3 id="want">{{ user.username }}'s Wish List</h3>
+
+        {% for picture in want %}
+        <div class="profile-divs" alt="{{picture.book}}">
+          <div class="list-book-option" id="div{{ picture.book }}">
+          <a href="/books/{{ picture.book }}">
+            {% if picture.profile.length == 2 %}
+              <img src="#">
+            {% else %}
+              <img src="{{ picture.profile }}" class="book-thumbnail">
+            {% endif %}
+          </a>
+          <button type="button" id="{{ picture.book }}" class="wish-option-button list-not-chosen">&#10003</button>
+          </div>
+        </div>
+        {% else %}
+          <p>This user has no items on their Wishlist.</p>
+        {% endfor %}
+
+      </div>
+
+      <div class="right-col" id="other-profile-right-col">
+        <h3 id="have">{{ user.username }}'s Exchange List</h3>
+
+        {% for picture in own %}
+        <div class="profile-divs" alt="{{picture.book}}">
+          <div class="list-book-option own-option" id="div{{ picture.book }}">
+          <a href="/books/{{ picture.book }}">
+          {% if picture.profile.length == 2 %}
+            <img src="#">
+          {% else %}
+            <img src="{{ picture.profile }}" class="book-thumbnail">
+          {% endif %}
+          </a>
+          <button type="button" id="{{ picture.book }}" class="own-option-button list-not-chosen">&#10003</button>
+          <p class="profile-condition"><strong>Condition: </strong>{{picture.condition}}<br>
+            <strong>Condition details: </strong>{{picture.conditionDetails}}
+          </p>
+          </div>
+
+        </div>
+        {% else %}
+          <p>This user has no items on their Swap List.</p>
+        {% endfor %}
+
+      </div>
+    </form>
+    </section>
+
+    <div id="followers">
+      <h3>Followers</h3>
+
+      {% for follower in followers %}
+        <a href="/user{{ follower.sender }}"><img class="follower-pics" src="{{ follower.profile_pic }}" class="users"></a>
+      {% else %}
+        <p>This user has no followers.</p>
+      {% endfor %}
+    </div>
+
+    <div id="ratings">
+      <h3>Ratings</h3>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Commenter</th>
+            <th>Comment</th>
+            <th>Rating</th>
+          </tr>
+        </thead>
+
+        {% for rate in ratings %}
+        <tr>
+          <td>{{rate.commenter}}</td>
+          <td>{{rate.comment}}</td>
+          <td class="ratings" alt="{{ rate.rating }}"></td>
+        </tr>
+        {% else %}
+        <tr>
+          <td>This user has no reviews.</td>
+        </tr>
+        {% endfor %}
+      <table>
+
+    </div>
+
+  </section>
+
+  <script src="/assets/js/profile.js" type="text/javascript" defer></script>
+
+{% endblock %}

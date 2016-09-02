@@ -1,0 +1,66 @@
+<!DOCTYPE>
+<html>
+
+<head>
+    <link href="assets/css/login_style.css" rel="stylesheet" type="text/css">
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js" rel="script" type="text/javascript" defer></script>
+    <!--  <script src="assets/js/login_script.js" rel="script" type="text/javascript" defer></script>     -->
+    <script src="https://apis.google.com/js/platform.js" async></script>
+    <meta name="google-signin-client_id" content="816980302628-7fjmasuvca30gttjarcs4bub7k7t8gtf.apps.googleusercontent.com">
+    <link href='https://fonts.googleapis.com/css?family=Gentium+Book+Basic:700,400|PT+Sans:400,400italic,700' rel='stylesheet' type='text/css'>
+
+    <title>Welcome to Bookmi</title>
+</head>
+
+<body>
+  <script>
+    gapi.load('auth2', initSigninV2);
+    var auth2;
+    function initSigninV2() {
+        gapi.auth2.init({
+            client_id: '816980302628-7fjmasuvca30gttjarcs4bub7k7t8gtf.apps.googleusercontent.com'
+        }).then(function (authInstance) {
+        auth2 = gapi.auth2.getAuthInstance();
+    });
+    }
+
+    function signOut() {
+      auth2.signOut().then(function () {
+        console.log('User signed out.');
+        window.location.href = '/';
+    })
+  }
+
+    function onLoad() {
+      gapi.load('auth2', function() {
+        gapi.auth2.init();
+    });
+  }
+</script>
+<div id="back">
+    <div id="page-1">
+        <header id="header-top">
+
+            <h1>Bookmi</h1>
+
+        </header>
+        <div class="form">
+            {% if error %}
+            <p class="error">{{ error }}</p>
+            {% endif %}
+
+            <p class="welcome">Hello, we have never seen you before, please select a username.</p>
+            <form method="post" action="/welcome" id="form-login">
+                <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+                <input type="text" id="sign-in-username" name="username" placeholder="Username" maxlength="20" required>
+                <button type="submit" id="sign_in">Login</button>
+            </form>
+            <p class="login-msg">Never mind, I want to register without Google. <a href="#" onclick="signOut();">Sign out</a></p>
+        </div>
+        <header id="header-bottom">
+        </header>
+    </div>
+
+</body>
+
+</html>

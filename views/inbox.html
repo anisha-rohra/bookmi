@@ -1,0 +1,70 @@
+{% extends "layout.html" %}
+
+{% block content %}
+  <section id="inbox_section">
+
+    <h2>Messages</h2>
+
+    <button id="new-msg-button">New Message</button>
+    <form id="new-msg-form" action="/inbox" method="post">
+      <input type="hidden" name="_csrf" value="{{ csrfToken }}">  
+      <input type="text" name="recipient" placeholder="Username" class="block-form" maxlength="25" required>
+      <input type="text" name="msgSubject" placeholder="Subject" class="block-form" maxlength="100" required>
+      <textarea name="message" placeholder="Enter you message here" rows="13" cols="80" maxlength="1000"></textarea>
+      <input type="submit" value="Send">
+    </form>
+
+    {% for convo in conversations %}
+      <section class="convo">
+        <h3 class="convo-header">
+          <div class="other-user"><a href="/user{{ convo.otherUserID }}">{{ convo.otherUser }}</a></div>
+          <div class="inbox-subj">{{ convo.subject }}</div> 
+        </h3>
+        {% for msg in convo.messages %}
+          {% if msg.sent %}
+            <div class="msg inbox-sent">
+              <img src="{{ convo.userPic }}" class="inbox-pic">
+          {% else %}
+            <div class="msg inbox-received">
+              <img src="{{ convo.otherUserPic }}" class="inbox-pic">
+          {% endif %}
+          <!--<div class="msg {{ msg.mType }}">-->
+            <p class="msg-date">{{ msg.date }}</p>
+            <p>{{ msg.sender }}</p>
+            <p class="msg-content">{{ msg.content}}</p>
+          </div>
+        {% endfor %}
+        <button id="{{ convo.buttonID }}" class="reply-button">Add Message</button>
+        <form id="{{ convo.replyID }}" class="reply-form" action="/inbox/reply" method="post">
+          <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+          <input type="hidden" name="prevID" value="{{ convo.buttonID }}">
+          <input type="hidden" name="recipient" value="{{ convo.recipientID }}">
+          <textarea name="message" placeholder="Enter you message here" rows="7" cols="100" maxlength="1000"></textarea>
+          <input type="submit" value="Send">
+        </form>
+        
+      </section>
+    {% endfor %}
+
+    <!--<table>
+      <thead>
+        <tr>
+          <th>Message Number</th>
+          <th>Content</th>
+          <th>User</th>
+        </tr>
+      </thead>
+
+      {% for msg in messages %}
+        <tr>
+          <td>{{ msg.number }} </td>
+          <td>{{ msg.content }}</td>
+          <td>{{ msg.sender }}</td>
+        </tr>
+      {% else %}
+
+      {% endfor %}
+    </table>-->
+
+  </section>
+{% endblock %}

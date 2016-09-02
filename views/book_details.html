@@ -1,0 +1,138 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<section id="book-details-section">
+  <h2 id="details-title">{{ book_title }}</h2>
+  <img src="{{ thumbnail }}" alt="thumbnail" id="details-thumbnail">
+  <div class="book-details-div">
+    <table id="books-details">
+      <tr>
+        <th>Author</th>
+        <td>{{ author }}</td>
+      </tr>
+      <tr>
+        <th>ISBN</th>
+        <td>{{ isbn }}</td>
+      </tr>
+      <tr>
+        <th>Published</th>
+        <td>{{ publishedDate }}</td>
+      </tr>
+      <tr>
+        <th>Publisher</th>
+        <td>{{ publisher }}</td>
+      </tr>
+      <tr>
+        <th>Description</th>
+        <td>{{ description }}</td>
+      </tr>
+      <tr>
+        <th>Categories</th>
+        <td>{{ categories }}</td>
+      </tr>
+      <tr>
+        <th>Rating</th>
+        <td class="avg-review">
+          {% if avg_review >= 1 %}
+          <img class="star" src="/assets/images/filled_star.png">
+          {% else %}
+          <img class="star" src="/assets/images/star.png">
+          {% endif %}
+          {% if avg_review >= 2 %}
+          <img class="star" src="/assets/images/filled_star.png">
+          {% else %}
+          <img class="star" src="/assets/images/star.png">
+          {% endif %}
+          {% if avg_review >= 3 %}
+          <img class="star" src="/assets/images/filled_star.png">
+          {% else %}
+          <img class="star" src="/assets/images/star.png">
+          {% endif %}
+          {% if avg_review >= 4 %}
+          <img class="star" src="/assets/images/filled_star.png">
+          {% else %}
+          <img class="star" src="/assets/images/star.png">
+          {% endif %}
+          {% if avg_review >= 5 %}
+          <img class="star" src="/assets/images/filled_star.png">
+          {% else %}
+          <img class="star" src="/assets/images/star.png">
+          {% endif %}
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <section class="details-section">
+    <h3>Users who own this book</h3>
+    {% for book in swaps %}
+    <a href="/user{{ book.userID }}">
+      <img src="{{ book.pic }}" class="detail-users">
+    </a>
+    {% else %}
+    <p>Looks like no users have this book on their Exchange List!</p>
+    {% endfor %}
+  </section>
+
+  <section class="details-section">
+    <h3>Users who want this book</h3>
+    {% for book in wishes %}
+    <a href="/user{{ book.userID }}">
+      <img src="{{ book.pic }}" class="detail-users">
+    </a>
+    {% else %}
+    <p>Looks like no users have this book on their Wish List!</p>
+    {% endfor %}
+  </section>
+  <section id="review-section">
+    <div id="review-header">
+      <h3>Review this book: </h3>
+      <img alt="1" id="star-1" class="star-rev" src="/assets/images/star.png">
+      <img alt="2" id="star-2" class="star-rev" src="/assets/images/star.png">
+      <img alt="3" id="star-3" class="star-rev" src="/assets/images/star.png">
+      <img alt="4" id="star-4" class="star-rev" src="/assets/images/star.png">
+      <img alt="5" id="star-5" class="star-rev" src="/assets/images/star.png">
+    </div>
+    <form id="book-review" action="/review/{{ isbn }}" method="post">
+      <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+      <input type="hidden" name="rating" id="rev-rating" value="0">
+      <table class="form-table">
+        <tbody>
+          <tr class="review-form">
+            <td><textarea name="message" id="review" value="" placeholder="Please enter your review." cols="150" rows="5"></textarea></td>
+          </tr>
+        </tbody>
+      </table>
+      <button id="review-submit" form="book-review">Submit Review</button>
+    </form>
+  </section>
+
+  <table>
+    <thead>
+      <tr class="table-head">
+        <th class="reviewer-username">Reviewer</th>
+        <th class="reviewer-message">Review</th>
+        <th class="reviewer-rating">Rating</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for review in reviews %}
+      {% include "book_review.html" %}
+      {% endfor %}
+    </tbody>
+  </table>
+  {% if not reviews.length %}
+    <p>No reviews found.</p>
+  {% endif %}
+</section>
+<section id="recommendations-section">
+  <h3>Recommended based on this book:</h3>
+  <ul id="recom-books">
+    {% for item in recommendations %}
+    <li class="rec"><a class="book-hover" href="/books/{{ item.volumeInfo.ISBN }}"><img src="{{ item.volumeInfo.pic }}" title="{{ item.volumeInfo.title }}"></a></li>
+    {% else %}No recommendations found{% endfor %}
+  </ul>
+</section>
+
+<script src="/assets/js/review.js" type="text/javascript" defer></script>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends "admin/layout.html" %}
+
+{% block content %}
+<script>
+function goBack() {
+    window.history.back();
+}
+</script>
+
+<section id="user-admin-section">
+  {% if err }
+  <p class="error">{{ err }}</p>
+  {% else %}
+  <p class="error">Sorry, an error occured</p>
+  {% endif %}
+  <button onclick="goBack()">Go Back</button>
+</section>
+
+{% endblock %}

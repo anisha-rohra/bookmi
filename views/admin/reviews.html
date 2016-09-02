@@ -1,0 +1,56 @@
+{% extends "admin/layout.html" %}
+
+{% block content %}
+
+<section id="comments-admin-section">
+
+  {% if err %}
+  <p class="error">{{ err }}</p>
+  {% endif %}
+  <div class="header-center">
+    <h3 id="comments-header">Reviews Management</h3>
+  <form id="search-form" name="search-form" method="get" action='#'>
+    <input id="search-field" type="search" name="search" class="search-admin" placeholder="Search" required>
+    <input type="submit" id="submit-search" class="submit" value="Search Comments">
+  </form>
+  <form id="rev-form">
+  <input type="submit" id="del-rev-submit" class="submit" value="Delete">
+  <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+  </form>
+    <table id="review-table">
+      <thead>
+        <tr>
+          <th class="cmt-del">Delete</th>
+          <th class="cmt-date">Date</th>
+          <th class="cmt-user">User</th>
+          <th class="cmt-isbn">Book</th>
+          <th class="cmt-msg">Message</th>
+          <th class="cmt-rating">Rating</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for cmt in comments %}
+        <tr class="cmt-mgt">
+          <td class="cmt-del"><input type="checkbox" class="del-checked" name="{{ cmt.id }}"></td>
+          <td class="cmt-date">{{ cmt.comment_date }}</td>
+          <td class="cmt-user"><a href="/admin/edit-user?id={{ cmt.user }}">{{ cmt.username }}</a></td>
+          <td class="cmt-isbn"><a href="/books/{{ cmt.book }}">{{ cmt.book }}</a></td>
+          <td class="cmt-rating">{{ cmt.rating }}</td>
+          <td class="cmt-msg">{{ cmt.message }}</td>
+        </tr>
+
+        {% else %}
+        <tr><p>No messages found</p>
+          {% endfor %}
+        </tbody>
+      </table>
+      {% if prev >= 0 %}
+      <a class="prev" href="/admin/reviews?p={{ prev }}">Prev</a>
+      {% endif %}
+      {% if next > 0 %}
+      <a class="next" href="/admin/reviews?p={{ next }}">Next</a>
+      {% endif %}
+    </div>
+  </section>
+
+  {% endblock %}

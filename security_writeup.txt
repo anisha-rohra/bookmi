@@ -1,0 +1,42 @@
+Security
+You should address at least two well-known security vulnerabilities. You can use a framework to do this. In your report, document how this was done.
+
+In the Bookmi application, we looked at the following security vulnerabilities:
+
+1. SQL Injection
+An SQL injection is an attack where a malicious attacker tries tamper with a database by inputting SQL commands directly into input fields for execution. 
+
+Bookmi mitigates the risk by using parameterized queries for all our database queries. 
+	Instead of: 
+		client.query('SELECT * FROM Users WHERE id=' + user_input,....
+
+	We use:
+		client.query('SELECT * FROM Users WHERE id=$1', [user_input],....
+
+Attempting to put the following string into the sign in page will return an error as the site checks for valid usernames first (< 20 chars) and also runs the query parametrized and will return "Username or password is not correct."
+	admin' UNION select id, username, "$2a$10$1OvSG6GzAt15LYTb/s2A7u/EeuxchHJdnMqKCjtym8k.r84ImaFv2", user_type FROM users WHERE user_type = "admin" LIMIT 1 --
+
+The parameterized queries are parsed, analyzed, rewritten and planned before execution, provding safety against SQL injection attacks.
+
+2. Cross-Site Request Forgery (CSRF)
+A CRSF attack happens when a malicious agent causes a user's own browser to make unwanted requests to a website where the user is current authenticated. The attack is particularily harmful when the user is an administrator on the site as they can make requests that impact many other users. 
+
+Bookmi mitigates this risk by using the csurf (https://github.com/expressjs/csurf) protection middleware. csurf generates a token that is stored server side and also returned to the user with each page. The token is then returned when the form is submitted and csurf verifies that the token matches before allowing the request. The token is not visible to other browsers or malicious software.
+
+We implement the token by embedding it into the form
+  <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+
+and also the meta tags for dynamic AJAX POST/DELETE requests
+  <meta content="{{ csrfToken }}" name="csrf-token" />
+
+Because malicious applications do not have access to the csrf token, trying to submit any form requiring such a token will return "403 Forbidden". CSRF protection has been added to all methods requiring a POST/DELETE.
+	For example: POST /profile?id=39 will return 403 Forbidden if a CSRF token is not included.
+
+3. Other general security concerns addressed
+	- Passwords: We try to address password security by requiring users to use at least an eight digit password. In addition, passwords are hashed and stored using bcrypt so that in case the passwords db is compromised, user security is not.
+	- Input validation: In general, Bookmi does sanity checks on all user input. Checks are provided on the front-end using HTML5 validation. The inputs are also validated on the server side to prevent users from modifying the HTML and JS to access the server side maliciously. 
+	For example: 
+		- Uploaded images are verified by reading the magic numbers and not just reading the extension to prevent malicious uploads. Files are renamed when stored.
+		- Messages to private users and reviews cannot be longer than a certain number of characters. 
+		- Usernames cannot be longer than 20 chars. 
+		- Valid emails, ages, gender must be provided and verified on the server side.

@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<!-- Display book overlay -->
+<div id='hover-overlay'>
+<p id='hover-overlay-title'>title</p>
+<p id='hover-overlay-author'>author</p>
+</div>
+
+    <section id="swap_section">
+      <h2>My Exchange List</h2>
+      <!--<button id="add-swap-book-button">Add Book</button> -->
+
+      <!--<form id="swap-form" action="/search-books" method="get">-->
+        
+      <!--</form>-->
+      <form id="swap-search-results" action="/swap" method="post">
+      <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+        <fieldset>
+          <legend>Add Book:</legend>
+          <input type="text" name="title" id="swap-title" placeholder="Title" class="block-form">
+          <input type="text" name="author" id="swap-author" placeholder="Author" class="block-form">
+          <button type="button" id="swap-book-search">Search</button>
+          <div id="swap-container" class="book-hover-container">
+          </div> 
+        </fieldset>
+      </form>
+
+      <form id="swap-books-form" action="/swap-delete" method="post">
+      <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+        <input type="submit" value="Delete Selected" class="book-delete-button">
+        <table>
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Author</th>
+              <th>Condition</th>
+              <th>Details</th>
+              <th>ISBN</th>
+              <th>Select</th>
+            </tr>
+          </thead>
+
+          {% for book in books %}
+            <tr>
+              <td><a href="/books/{{ book.isbn }}" class="list-title">{{ book.title }}</a></td>
+              <td>{{ book.author }}</td>
+              <td>{{ book.condition }}</td>
+              <td>{{ book.conDetails }}</td>
+              <td>{{ book.isbn }}</td>
+              <td><input type="checkbox" name="selectedBooks" value="{{ book.isbn }}"></td>
+            </tr>
+          {% endfor %}
+        </table>
+      </form>
+    </section>
+  <script src="/assets/js/hover.js" type="text/javascript" defer></script>
+{% endblock %}

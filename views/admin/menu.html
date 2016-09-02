@@ -1,0 +1,17 @@
+  <nav id="menu">
+  <button id="menu-button"></button>
+  <ul id="menu_list">
+    <li><a href="/admin/users" id="user-admin">Users</a></li>
+    <li><a href="/admin/reviews" id="books-admin">Reviews</a></li>
+    <li><a href="/admin/analytics" id="ana-admin">Analytics</a></li>
+    <div class="controls">
+    <form class="menu-form"  name="signout" action="/signout" method="post">
+    <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+      <input type="submit" value="Sign Out" id="logout">
+    </form>
+    <form class="menu-form"  name="back" action="/" method="get">
+      <input type="submit" value="Back to Bookmi">
+    </form>
+    </div>
+  </ul>
+</nav>

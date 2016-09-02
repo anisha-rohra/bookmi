@@ -1,0 +1,922 @@
+/* Larger Tags Details */
+html {
+  background-image: url("../images/backgroundcolor2.png");
+  background-size: cover;
+    background-attachment: fixed;
+}
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  /*color: #333333;*/
+  color: black;
+  /*background: white;*/
+}
+
+/* main {
+  padding: 8% 4% 5% 4%;
+  margin-left: 8%;
+  margin-right: 7%;
+  font-family: 'PT Sans', sans-serif;
+  font-size: 1.05em;
+  background-color: rgba(255, 255, 255, 0.91);
+  min-height:100vh;
+}*/
+
+main {
+  font-family: 'PT Sans', sans-serif;
+  font-size: 1.05em;
+  margin-left: 7%;
+  margin-right: 7%;
+  padding: 8% 4% 5% 4%;
+}
+
+#background {
+  background-color: rgba(255, 255, 255, 0.8);
+  width: 100%;
+  height: 100%;
+  min-height:100vh;
+  padding-bottom: 5%;
+}
+
+header {
+  background-image: url("../images/backgroundcolor.png");
+  background-size: cover;
+}
+
+#title:hover {
+  color: #C94A4A;
+}
+
+#back {
+  background-color: rgba(141,105,92,0.6);
+  padding-top: 140px;
+  padding-bottom: 90px;
+}
+
+/*Navigation Details*/
+nav {
+  font-family: 'PT Sans', sans-serif;
+  top: 0;
+  left: 0;
+  font-size: 1em;
+  background-color: white;
+  color: black;
+  text-align: center;
+  width: 100%;
+  position: fixed;
+  box-shadow: 0 10px 6px -6px rgba(0, 0, 0, 0.19);
+  z-index: 1000;
+}
+nav ul {
+    /*text-align: center;*/
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    z-index: 5000;
+}
+nav li {
+    display: inline;
+}
+/*Style the clickable elements (anchors) in the navigation bar*/
+nav a {
+    text-decoration: none;
+    display:inline-block;
+    padding: 18px 23px 18px 23px;
+}
+nav a:link, nav a:visited {
+    color: black;
+}
+nav a:hover {
+    color: #C94A4A;
+}
+nav a#recs, nav a#recs:hover  {
+  background-color: #C94A4A;
+  color: white;
+  font-family: 'Gentium Book Basic', serif;
+  font-weight: bold;
+  font-size: 1.4em;
+}
+.smallnav ul {
+    display: none;
+}
+.smallnav ul.open {
+    display: block;
+    overflow-y: scroll;
+  height: 100%;
+}
+.scroll-nav {
+    overflow-y: scroll;
+    height: 100%;
+}
+.show {
+    display: block;
+}
+.hide {
+    display:none;
+}
+#menu-button {
+    position: absolute;
+    top: 0.75rem;
+    left: 0.75rem;
+    background: url("../images/menu.png") no-repeat top center;
+    background-size: 85%;
+    border: 0;
+    cursor: pointer;
+    font-size: 0.5rem;
+    padding-top: 1.75rem;
+    width: 2rem;
+    height: 2.5rem;
+    z-index: 6000;
+}
+
+/* Dropdown Menu Details */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: white;
+  width: 170px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  padding-right: 50%;
+}
+
+.dropdown-content a:hover {
+  background-color: white;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+li.sub {
+  list-style-type: none;
+  text-align: left;
+  /*margin-top: 10%;
+  margin-bottom: 10%;*/
+}
+
+a.sub {
+  text-decoration: none;
+  color: black;
+  display: block;
+  /*padding-top: 15px;
+  padding-bottom: 15px;*/
+}
+
+.sub:hover {
+  color: #C94A4A;
+}
+
+
+/* Headings Details */
+h1 {
+  font-family: 'Gentium Book Basic', serif;
+  font-size: 6em;
+  text-align: center;
+  color: white;
+}
+
+h2 {
+  font-family: 'Gentium Book Basic', serif;
+  font-size: 2.5em;
+  text-align: center;
+  /*color:  #333333;*/
+  color: black;
+}
+
+h3 {
+  font-size: 1.5em;
+}
+
+/* Margin Details */
+.rec {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+#about-main {
+  margin-top: 0px;
+}
+
+img.profile_h3 {
+  margin-top: 3%;
+}
+
+.search-users {
+  margin-top: 2%;
+}
+
+
+/* Standard Tags Details */
+li {
+  list-style-type: none;
+  display: inline;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #C94A4A;
+  cursor: pointer;
+}
+
+button {
+  display: block;
+  font-size: 1em;
+  font-family: 'PT Sans', sans-serif;
+  background-color: #808080;
+  border: none;
+  color: white;
+  padding: 4px 8px;
+  text-align: center;
+  text-decoration: none;
+  z-index: 100;
+}
+
+button:hover {
+  background-color: #C94A4A;
+  cursor: pointer;
+}
+
+.response-buttons {
+  display: inline;
+}
+
+
+#search {
+  width: 10%;
+}
+
+/* Forms Details */
+.contact {
+  display: block;
+  margin: 0 auto;
+  width: 250px;
+  margin-bottom: 1%;
+  font-family: 'PT Sans', sans-serif;
+  font-size: 1.1em;
+}
+
+#user_search, #user_submit, .search-books, .search-users {
+  display: inline-block;
+  margin-bottom: 1%;
+  font-family: 'PT Sans', sans-serif;
+  font-size: 1.25em;
+}
+
+input[type=submit] {
+  /*width: 100px;*/
+  font-family: 'PT Sans', sans-serif;
+  font-size: 1.1em;
+  background-color: #808080;
+  border: none;
+  color: white;
+  padding: 4px 8px;
+  text-align: center;
+  text-decoration: none;
+}
+
+input[type="submit"]:hover {
+  background-color: #C94A4A;
+  cursor: pointer;
+}
+
+#search-books-form {
+  display: inline;
+}
+
+.menu-form {
+  display: inline;
+}
+
+.block-form {
+  display: block;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  width: 285px;
+}
+
+textarea {
+  font-family: 'PT Sans', sans-serif;
+  font-size: 1em;
+}
+
+fieldset {
+  display: inline-block;
+}
+
+/* Search books to add to swap/wishlist */
+div.list-book-option, div.list-users, div.profile-divs {
+  position: relative;
+  display: inline-block;
+}
+div.list-book-option:hover button, div.list-users:hover button, div.profile-divs:hover .profile-input {
+  display: block;
+}
+div.list-book-option button, div.list-users button, div.profile-divs .profile-input {
+  position:absolute;
+  top:20px;
+  left:20px;
+  background-color: rgba(61, 185, 219, 0.83);
+  font-size: 1.9em;
+  padding: 1px 8px 1px 8px;
+  color: white;
+  border-radius: 50%;
+}
+
+.list-not-chosen {
+  display:none;
+}
+.list-chosen, .want-chosen, .own-chosen {
+  display: block;
+}
+img.book-thumbnail {
+  height: 200px;
+  margin: 20px;
+}
+.book-delete-button {
+  margin-top: 80px;
+  float:right;
+}
+#swap-container, #wish-container {
+  margin-top: 15px;
+}
+#condition-label {
+  display:block;
+}
+.submit-chosen {
+  margin-left: 20px;
+}
+#con-details {
+  margin-left: 20px;
+  width: 300px;
+}
+.wish-chosen {
+  display: block;
+}
+.list-title {
+  text-decoration: underline;
+}
+
+.list-users {
+  margin: 3%;
+  width: 150px;
+  height: auto;
+}
+
+.list-users img {
+  width: 100px;
+  height: 100px;
+}
+
+/* Search books from nav bar */
+.searched-book-div {
+  font-size: 1.2em;
+  clear: both;
+  max-width: 600px;
+}
+.searched-book-div p {
+  margin:0px;
+}
+.searched-title {
+  padding-top: 20px;
+}
+img.search-books {
+  float: left;
+  margin-right: 17px;
+  margin-bottom: 40px;
+}
+
+/* Table details */
+table {
+  margin-top: 3%;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even){background-color: white}
+tr:nth-child(odd){background-color: #e3e3e3}
+
+th {
+  background-color: #AF4B4B;
+  color: white;
+}
+
+.table-head {
+  background-color: #AF4B4B!important;
+}
+
+/* Book details */
+#recom-books img {
+  max-width: 150px;
+}
+
+img.detail-users {
+  height: 60px;
+  width: 60px;
+}
+
+#details-thumbnail {
+  margin: 0 auto;
+  display: block;
+}
+
+section.details-section {
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+
+table#book-details {
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+
+/* Admin Page */
+table#ana-table {
+  width: 60%;
+  margin: 0 auto;
+  margin-top: 50px;
+}
+
+div.left-col {
+  width: 600px;
+  float: left;
+  position: absolute;
+}
+
+div.right-col {
+  margin-left: 600px;
+}
+
+h3#new-users {
+  margin-left: 200px;
+}
+
+h3#active-users {
+  margin-left:170px;
+}
+
+h3#recently-commented {
+  margin-left: 112px;
+}
+
+h3#most-popular {
+  margin-left: 167px;
+}
+
+.star {
+  max-height:35px;
+  width: auto;
+}
+
+/* Review styling */
+.reviewer-username {
+  width: 10%;
+}
+
+.reviewer-message {
+
+}
+
+.reviewer-rating {
+  float: right;
+  width: 200px;
+}
+
+.books {
+  width: 30%;
+  height: auto;
+}
+
+#other-profile-right-col {
+  margin-top: 3%;
+}
+
+#other-profile-left-col {
+  margin-top: 1%;
+}
+
+#profile_header {
+  margin-bottom: 0;
+}
+
+.div {
+  display: inline-block;
+  width: 128px;
+  height: 192px;
+}
+
+/* Inbox */
+#new-msg-form {
+  margin-bottom: 50px;
+}
+.convo-header {
+  font-size: 0.4em;
+}
+.other-user, .inbox-subj{
+  display: inline;
+  font-weight:normal;
+  padding: 5px;
+  font-size: 3em;
+  margin-bottom: 0px;
+}
+
+div.other-user {
+  border-radius: 10px;
+  background: #C94A4A;
+  color: white;
+  margin-right: 15px;
+}
+div.other-user a {
+  color:white;
+}
+div.other-user a:hover {
+  color: black;
+}
+
+section.convo {
+  margin-top: 70px;
+  margin-bottom: 100px;
+}
+
+div.msg {
+  padding: 10px 20px 1px 20px;
+  line-height: 1.00;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-radius: 4px;
+}
+
+.inbox-sent {
+  background-color: #d8ecf0;
+}
+
+.inbox-received {
+  background-color: white;
+}
+
+button.reply-button {
+ /* margin-left: 600px;*/
+}
+
+p.msg-content {
+  word-wrap: break-word;
+  margin-top: 27px;
+}
+
+#inbox_section {
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.msg-date {
+  float: right;
+}
+
+.inbox-pic {
+  width: 50px;
+  height: 50px;
+  float: left;
+  margin-right: 10px;
+}
+
+#followers {
+  margin-top: 5%;
+}
+
+/* Profile pic display styles */
+#image-upload {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+.upload-label {
+  display: inline-block;
+  font-size: 1.1em;
+  background-color: #808080;
+  border: none;
+  color: white;
+  padding: 4px 8px;
+  text-align: center;
+  text-decoration: none;
+}
+
+.upload-label:hover {
+  background-color: #C94A4A;
+  cursor: pointer;
+}
+
+#submit-upload {
+  display: none;
+}
+
+p.err {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  display: inline-block;
+}
+
+progress {
+  display: none;
+  height: 26px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.hide {
+  display: none;
+}
+
+/* Styles for submitting review section */
+#review-header {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
+#review-section .star-rev {
+  max-height: 35px;
+  width: auto;
+}
+
+#review-section form {
+  clear: both;
+}
+
+#review-section h3 {
+  display: inline-block;
+  margin: 10px;
+}
+
+.rating-form img {
+  max-height: 25px;
+  width: auto;
+  margin-bottom: 0;
+}
+
+.profile-stars {
+  max-height: 30px;
+  width: auto;
+}
+
+#div-profile {
+  display: inline;
+}
+
+/* Styles for Community Page */
+img.comm-pic {
+  height: 70px;
+  width: 70px;
+  float: left;
+}
+img.comm-pic:hover {
+  cursor: pointer;
+}
+div.comm-user {
+  clear: both;
+  display: inline-block;
+  width: 300px;
+  /*border: 2px solid #7e7e7e;*/
+  /*background:#dcdcdc;*/
+  padding: 15px;
+  margin-right: 15px;
+  margin-bottom: 15px;
+}
+p.comm-name {
+  margin-top: 23px;
+  margin-left: 10px;
+  display: inline-block;
+}
+section.follow-sec {
+  background-color: white;
+  padding: 1px 13px 1px 13px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+/* Recommended books page */
+#rec-main {
+  display: flex;
+}
+
+#rec-based img {
+  min-width: 150px;
+  display: inline-block;
+  float: left;
+}
+
+#recom-books {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+
+#recom-books img {
+
+}
+
+#recom-div {
+  max-width: 70%;
+  float: left;
+}
+
+#rec-left {
+  flex: 1;
+}
+
+#rec-right {
+  flex: 3;
+}
+
+#rec-main th {
+  display: none;
+}
+
+#rec-main tr {
+  max-width: 200px;
+}
+
+#rec-based-on-img img {
+  width: 150px;
+  margin-bottom: 10px;
+}
+
+#followers img {
+  width: 100px;
+  height: 100px;
+}
+
+/* Other Profile Request Section */
+#submit-want {
+  margin-top: 30px;
+  margin-bottom: 0px;
+}
+
+.profile-condition {
+  float: right;
+}
+
+.own-option {
+  clear: both;
+}
+
+#profile_header {
+  display: inline-block;
+}
+
+#hover-overlay {
+  display:block;
+  position: absolute;
+  max-width: 300px;
+  border-radius:10px; 
+  background: rgba(215, 217, 219, 0.9);
+  z-index: 12;
+/*  top: -999;
+  left: -999;*/
+}
+#hover-overlay p {
+  margin: 10px;
+  z-index: 11;
+  color: rgba(0, 0, 0, 1);
+/*  top: -999;
+  left: -999;*/
+}
+
+.hidden {
+  display: none;
+}
+
+/* First breakpoint: width=1024 for tablets landscape view*/
+@media screen and (max-width: 1024px)
+{
+  .smallnav li {
+    display: block;
+  }
+
+  .smallnav {
+    width: 30%;
+  }
+
+  .smallnav a {
+    padding: 20px 20px 20px 20px;
+  }
+
+  #admin-button {
+    display:block;
+    margin: auto;
+    margin-top: 10px;
+  }
+
+  #logout-button {
+    display: block;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+}
+
+/* Second breakpoint: width=768 for tablets portrait view */
+@media screen and (max-width: 768px)
+{
+
+  .smallnav {
+    width: 50%;
+  }
+
+   .smallnav a {
+    padding: 10px 30px 10px 30px;
+  }
+
+  table {
+    display: block;
+    overflow-x: auto;
+  }
+
+  #inbox_section {
+    margin-left: 0%;
+    margin-right: 0%;
+  }
+
+}
+
+/* Third breakpoint: width=480 mobile landscape view*/
+@media screen and (max-width: 480px)
+{
+  main {
+    font-size: 1em;
+    margin-left: 0%;
+    margin-right: 0%;
+  }
+
+  .smallnav {
+    width: 65%;
+  }
+  .block-form, #con-details {
+    width: 220px;
+  }
+  .searched-book-div p {
+    font-size: 0.8em;
+  }
+
+}
+
+/* Fourth breakpoint: width=320 mobile portrait view */
+@media screen and (max-width: 320px)
+{
+
+  div.left-col {
+    display: block;
+    position: static;
+    width: 100%;
+    float: none;
+    margin: 0;
+  }
+
+  div.right-col {
+    display: block;
+    position: static;
+    width: 100%;
+    float: none;
+    margin: 0;
+  }
+
+}
+
+/* Other breakpoints */
+@media screen and (max-width: 800px) {
+  /* Hide based on recommendations*/
+  #rec-left {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  #rec-based-on-img img {
+    width: 100px;
+  }
+
+}
+
+@media screen and (max-width: 1px) {
+
+}

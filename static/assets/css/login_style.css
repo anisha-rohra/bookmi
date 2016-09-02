@@ -1,0 +1,260 @@
+/* From main css */
+
+h1 {
+    font-family: 'Gentium Book Basic', serif;
+    font-size: 6em;
+    text-align: center;
+    margin-bottom: 0;
+    color: white;
+}
+
+h2 {
+    font-family: 'Gentium Book Basic', serif;
+    font-size: 2em;
+    text-align: center;
+}
+
+li {
+    list-style-type: none;
+    display: inline;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+a:hover {
+    color: red;
+}
+
+#search {
+    width: 10%;
+}
+
+
+/* For login styles */
+
+a {
+    color: grey;
+    text-decoration: none;
+}
+
+body {
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    background-image: url("../images/backgroundcolor.png");
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+#back {
+  background-color: rgba(141,105,92,0.4);
+  overflow: auto;
+}
+
+.form {
+    background: #FFFFFF;
+    max-width: 400px;
+    /*margin: auto;*/
+    margin-top: 0px;
+    padding: 20px 20px 5px 20px;
+    text-align: center;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+.form .error {
+    color: red;
+}
+
+.form input {
+    width: 100%;
+    background: #e6e6e6;
+    margin: 0 0 15px;
+    outline: 0;
+    border: 0;
+    font-size: 15px;
+    padding: 15px;
+}
+
+.form button {
+    text-transform: uppercase;
+    outline: 0;
+    border: 0;
+    background: black;
+    width: 100%;
+    font-size: 15px;
+    padding: 15px;
+    color: white;
+    cursor: pointer;
+    transition: all 0.5 ease;
+}
+
+.form button:hover,
+.form button:active,
+.form button:focus {
+    background: darkgrey;
+}
+
+.form #third-party {
+    margin: 15px 0;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+}
+
+.form #third-party p {
+    width: 100%;
+    margin: 5px;
+    font-family: 'PT Sans', sans-serif;
+    padding-bottom: 0px;
+    margin-bottom: 5px;
+}
+
+#form-signup {
+    display: none;
+}
+
+#page-1 {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    align-content: space-between;
+    justify-content: center;
+}
+
+#page-1 #header-top {
+    margin-top: 2%;
+    width: 100%;
+    align-self: flex-start;
+}
+
+#page-1 #header-bottom {
+    align-self: flex-end;
+    width: 100%;
+    text-align: center;
+}
+
+#page-1 #header-bottom h2 {
+    display: inline-block;
+}
+
+#page-1 a {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+a.intro-down {
+  color: white;
+}
+
+a.intro-down:hover {
+  color: darkred;
+}
+
+.arrow-down {
+    display: inline-block;
+    content: "";
+    width: 0;
+    height: 0;
+    margin-left: 10px;
+    margin-right: 10px;
+    border-style: solid;
+    border-width: 17.3px 10px 0 10px;
+    border-color: white transparent transparent transparent;
+}
+
+.arrow-up {
+    display: none;
+    content: "";
+    width: 0;
+    height: 0;
+    margin-left: 10px;
+    margin-right: 10px;
+    border-style: solid;
+    border-width: 0 10px 17.3px 10px;
+    border-color: white transparent transparent transparent;
+}
+
+#intro-return {
+    position: absolute;
+    right: 10px;
+    margin-top: 20px;
+    display: none;
+}
+
+#page-2 {
+    position: relative;
+    top: 0;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+}
+
+#text {
+    background-color: rgba(0, 0, 0, 0.4);
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+#page-2 p {
+    padding-left: 5%;
+    padding-right: 5%;
+    color: white;
+}
+
+#top {
+  padding-top: 8%;
+}
+
+#bottom {
+  padding-bottom: 8%;
+}
+
+p {
+  font-family: 'PT Sans', sans-serif;
+}
+
+#text {
+  font-size: 22px;
+}
+
+#intro-return {
+  color: black;
+  font-family: 'Gentium Book Basic', sans-serif;
+  font-size: 1.5em;
+  color: white;
+  margin-right: 3%;
+}
+
+#intro-return:hover {
+  color: darkred;
+}
+
+
+@media screen and (max-width: 850px)
+{
+    /* Resize the login */
+    .form {
+        max-width: 75%;
+    }
+
+    #intro-return {
+        margin-top: 50px;
+    }
+
+    #header-bottom {
+      display: none;
+    }
+
+    #page-2 {
+      display: none;
+    }
+}

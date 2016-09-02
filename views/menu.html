@@ -1,0 +1,36 @@
+<nav id="menu">
+<button id="menu-button"></button>
+  <ul id="menu_list">
+    <li class="main"><a href="/recommendations" id="recs">Bookmi</a></li>
+    <li class="main"><a href="/about" id="about_us">About Us</a></li>
+    <div class="dropdown">
+      <li><a href="javascript:void(0)" id="list">My Lists</a></li>
+      <div class="dropdown-content">
+        <ul id="list-menu">
+          <li class="sub"><a class="sub" href="/swap" id="swap">Exchange List</a></li>
+          <li class="sub"><a class="sub" href="/wishlist" id="wish">Wish List</a></li>
+        </ul>
+      </div>
+    </div>
+    <li class="main"><a href="/community" id="community">Community</a></li>
+    <li class="main"><a href="/profile" id="profile">My Profile</a></li>
+    <li class="main"><a href="/inbox" id="inbox">Inbox</a></li>
+    <li class="main"><a href="/requests" id="requests">Requests</a></li>
+
+    <form class="menu-form" id="search-books-form" action="/search-books" method="get">
+      <input type="text" name="book" placeholder="Search Books" required>
+      <input type="submit" id="submit" value="Search" required>
+    </form>
+    {% if session.admin %}
+    <form class="menu-form"  name="admin" action="/admin" method="get">
+      <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+      <input type="submit" value="Admin" id="admin-button">
+    </form>
+    {% endif %}
+    <form class="menu-form"  name="signout" action="/signout" method="post">
+      <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+      <input type="submit" value="Sign Out" id="logout-button">
+    </form>
+  </ul>
+
+</nav>

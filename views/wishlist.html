@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<section id="wish_section">
+  <h2>My Wish List</h2>
+  <!--<button>Add Books</button>-->
+
+  <form id="wish-search-results" class="book-hover-container" action="/wishlist" method="post">
+    <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+    <fieldset>
+      <legend>Add Book:</legend>
+      <input type="text" name="title" id="wish-title" placeholder="Title" class="block-form">
+      <input type="text" name="author" id="wish-author" placeholder="Author" class="block-form">
+      <button type="button" id="wish-book-search">Search</button>
+      <div id="wish-container">
+      </div>
+    </fieldset>
+  </form>
+
+  <form id="wish-books-form" action="/wish-delete" method="post">
+    <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+    <input type="submit" value="Delete Selected" class="book-delete-button">
+
+    <table>
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Author</th>
+          <th>ISBN</th>
+          <th>Select</th>
+        </tr>
+      </thead>
+
+      {% for book in books %}
+      <tr>
+        <td><a href="/books/{{ book.isbn }}" class="list-title">{{ book.title }}</a></td>
+        <td>{{ book.author }}</td>
+        <td>{{ book.isbn}}</td>
+        <td><input type="checkbox" name="selectedBooks" value="{{ book.isbn }}"></td>
+      </tr>
+      {% endfor %}
+    </table>
+
+  </form>
+</section>
+<div id='hover-overlay'>
+  <p id='hover-overlay-title'>title</p>
+  <p id='hover-overlay-author'>author</p>
+</div>
+<script src="/assets/js/hover.js" type="text/javascript" defer></script>
+{% endblock %}

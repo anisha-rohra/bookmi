@@ -1,0 +1,99 @@
+<!DOCTYPE>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="assets/css/login_style.css" rel="stylesheet" type="text/css">
+    <meta content="{{ csrfToken }}" name="csrf-token" />
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js" rel="script" type="text/javascript" defer></script>
+    <script src="assets/js/login_script.js" rel="script" type="text/javascript" defer></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <meta name="google-signin-client_id" content="816980302628-7fjmasuvca30gttjarcs4bub7k7t8gtf.apps.googleusercontent.com">
+    <link href='https://fonts.googleapis.com/css?family=Gentium+Book+Basic:700,400|PT+Sans:400,400italic,700' rel='stylesheet' type='text/css'>
+
+    <title>{{ title }}</title>
+</head>
+
+<body>
+  <div id="back">
+    <div id="page-1">
+        <header id="header-top">
+
+            <h1>Bookmi</h1>
+
+        </header>
+        <div class="form">
+            {% if error %}
+            <p class="error">{{ error }}</p>
+            {% endif %}
+            <form method="post" action="/signin?redirect={{ session.redirect }}" id="form-login">
+                <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+                <input type="text" id="sign-in-username" name="username" placeholder="Username" maxlength="20" required>
+                <input type="password" id="sign-in-password" name="password" placeholder="Password" required>
+                <button type="submit" id="sign_in">Login</button>
+                <p class="login-msg">Not registered? <a id="create" href="#">Create an account</a></p>
+
+                <div id="third-party">
+                    <p>Sign in with Google:</p>
+                    <div class="g-signin2" data-onsuccess="onSignIn"></div>
+                </div>
+            </form>
+
+
+            <form method="post" action="/signup" id="form-signup">
+                <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+                <input type="text" id="reg_username" name="reg_username" placeholder="Username" maxlength="20" required>
+                <input type="text" id="first_name" name="first_name" placeholder="First Name" required>
+                <input type="text" id="last_name" name="last_name" placeholder="Last Name" required>
+                <input type="password" id="reg_password" name="reg_password" placeholder="Password" required>
+                <input type="password" id="reg_pwd_confirm" name="reg_pwd_confirm" placeholder="Password" required>
+                <input type="email" id="email" name="reg_email" placeholder="Email" required>
+                <button id="signup_submit">Sign up</button>
+                <p class="login-msg">Already registered? <a id="signin" href="#">Sign in</a></p>
+
+            </form>
+        </div>
+        <header id="header-bottom">
+            <div class="arrow-down"> </div>
+            <h2><a class="intro-down" href="#">What is Bookmi</a></h2>
+            <div class="arrow-down"> </div>
+            <strong><a id="intro-return" href="#">Return to Login</a></strong>
+        </header>
+    </div>
+
+    <div id="page-2">
+      <div id="text">
+        <strong>
+
+          <p id="top">Bookmi is a social book trading website, to allow <strong>YOU</strong>
+              to exchange books with other users. As an avid reader, Bookmi's creators
+              realize that they possess so many books that they either didn’t
+              finish or never intended to read again, and would to get rid of.
+              What if you could exchange those books for books you've always wanted to read?
+              And so Bookmi was born!</p>
+
+            <p> In order to help users figure out which books they want to read,
+              our site implements a database of books, providing summaries and
+              recommendations, as well as allowing users to review and rate books.
+              This way, readers do not have to leave our site to figure out which
+              books they want to read. Furthermore, users can rate the experience they
+              had exchanging books with other users, guaranteeing that if some user
+              is not holding up their end of the deal, they receive a bad review and
+              are not trusted for exchanges again. Readers can follow their friends,
+              their favourite reviewers, and the best swappers to keep up to date about
+              reviews, additions to lists, and available swaps. </p>
+
+            <p id="bottom">Bookmi is unlike any other website because it is dedicated to allowing
+              readers to efficiently exchange books while remaining social about the
+              books they have read and the books they want to read next. The very
+              few existing book swapping websites do not have a complex book and user
+              review system like ours, and thus are not very social network oriented.</p>
+          
+        </strong>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>

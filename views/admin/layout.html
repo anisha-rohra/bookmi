@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://code.jquery.com/jquery-3.1.0.min.js" rel="script" type="text/javascript" defer></script>
+  <meta content="{{ csrfToken }}" name="csrf-token" />
+  <script src="/assets/js/admin.js" type="text/javascript" defer></script>
+  <script src="/assets/js/script.js" type="text/javascript" defer></script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <link rel="/favicon.ico" href="data:image/x-icon;," type="image/x-icon"> 
+  <link href="/assets/css/main_style.css" rel="stylesheet" type="text/css">
+  <link href="/assets/css/admin_style.css" rel="stylesheet" type="text/css">
+  <link href='https://fonts.googleapis.com/css?family=Gentium+Book+Basic:700,400|PT+Sans:400,400italic,700' rel='stylesheet' type='text/css'>
+  <title>{{ title }}</title>
+
+</head>
+<body>
+  <!-- menu partial -->
+  {% include "admin/menu.html" %}
+<!--   <header>
+    <div id="back">
+      <a href="/admin"><h1 id="title">Bookmi Admin</h1></a>
+    </div>
+  </header> -->
+  <div id="background">
+    <main>
+
+      {% block content %}  {% endblock %}
+
+    </main>
+  </div>
+  <footer>
+
+  </footer>
+
+</body>
+</html>

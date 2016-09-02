@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<section id="search-books-section">
+	<h3>Results for {{ book_title }}</h3>
+
+	{% for book in books %}
+    <div class="searched-book-div">
+      <a href="/books/{{ book.isbn }}" class="book-result">
+        <img src="{{ book.pic }}" class="search-books">
+  		  <p class="searched-title"><b>{{ book.title }}</b></p>
+        <p><em>{{ book.author }}</em></p>
+        <p>{{ book.owners }} owners</p>
+      </a>
+    </div>
+	{% else %}
+	<li>Sorry, could not get results.</li>
+	{% endfor %}
+	
+</section>
+{% endblock %}

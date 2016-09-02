@@ -1,0 +1,99 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+  <section id="request-section">
+    <h2>Requests</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Requestor User</th>
+          <th>Requested User</th>
+          <th>Book Requestor User Owns</th>
+          <th>Book Requested User Owns</th>
+          <th>Status</th>
+          <th>Response</th>
+        </tr>
+      </thead>
+      {% for req in requests %}
+        <tr>
+          <td>{{ req.requestor }}</td>
+          <td>{{ req.requested }}</td>
+          <td>{{ req.wantBook }}</td>
+          <td>{{ req.ownBook }}</td>
+          <td>
+            {% if req.status == "rating_requestor" or req.status == "rating_requested" or req.status == "rating_both" %}
+              completed
+            {% else %}
+              {{ req.status }}
+            {% endif %}
+          </td>
+          <td>
+            {% if req.show %}
+              <form id="answer-form" action="/requests?id={{ req.exchangeID }}" method="post">
+                <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+                <input type="submit" value="Accept" name="accepted">
+                <input type="submit" value="Reject" name="rejected">
+              </form>
+            {% elif req.status == "requested" %}
+              <p>Waiting for the requested user to respond!</p>
+            {% endif %}
+            {% if req.status == "accepted" %}
+              <p>You two have been matched! Please message one another in order to exchange details to allow a swap!</p>
+              <form id="confirm-form" action="/requests?id={{ req.exchangeID }}" method="post">
+                <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+                <input type="submit" value="Got It!" name="ok">
+              </form>
+            {% endif %}
+            {% if req.rejected %}
+              <p>Unfortunately, the other user wasn't interested in a swap at this time.
+                Feel free to try swapping for another book or with another user!</p>
+            {% elif req.status == "rejected" %}
+              <p>You have rejected the other user for this request.</p>
+            {% endif %}
+            {% if req.status == "completed" %}
+              <form id="rate-form" action="/requests?id={{ req.exchangeID }}&user={{ req.current }}" method="post">
+                <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+                <input type="submit" value="Rate" name="rate">
+              </form>
+            {% endif %}
+            {% if req.status == "rating_requestor" or req.status == "rating_requested" or req.status == "rating_both" %}
+              {% if not req.rate %}
+                <form id="rate-form" action="/requests?id={{ req.exchangeID }}&user={{ req.current }}" method="post">
+                  <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+                  <input type="submit" value="Rate" name="rate">
+                </form>
+              {% endif %}
+            {% endif %}
+            {% if req.rate %}
+              {% if req.current == req.requestorID %}
+              <form class="rating-form" id="{{ req.exchangeID }}" action="/rate?id={{ req.exchangeID }}&user=requestor" method="post">
+              <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+              {% else %}
+              <form class="rating-form" id="{{ req.exchangeID }}" action="/rate?id={{ req.exchangeID }}&user=requested" method="post">
+              <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+              {% endif %}
+                <img alt="1" id="star1-{{ req.exchangeID }}" class="star-rev{{ req.exchangeID }}" src="/assets/images/star.png">
+                <img alt="2" id="star2-{{ req.exchangeID }}" class="star-rev{{ req.exchangeID }}" src="/assets/images/star.png">
+                <img alt="3" id="star3-{{ req.exchangeID }}" class="star-rev{{ req.exchangeID }}" src="/assets/images/star.png">
+                <img alt="4" id="star4-{{ req.exchangeID }}" class="star-rev{{ req.exchangeID }}" src="/assets/images/star.png">
+                <img alt="5" id="star5-{{ req.exchangeID }}" class="star-rev{{ req.exchangeID }}" src="/assets/images/star.png"><br>
+                <input type="hidden" name="rating" id="rev-rating{{ req.exchangeID }}" value="0">
+                <textarea name="message" id="review" value="" placeholder="Please enter your review." cols="50" rows="5"></textarea>
+                <input type="submit" value="Submit Review" name="review-submit">
+              </form>
+            {% endif %}
+          </td>
+        </tr>
+      {% else %}
+        <tr>
+          <td> You have no requests. </td>
+          <td> Make a request by visiting a book you want and choosing a user that has that book
+            to trade with. </td>
+        </tr>
+      {% endfor %}
+    </table>
+  </section>
+
+  <script src="/assets/js/ratings_review.js" type="text/javascript" defer></script>
+{% endblock %}

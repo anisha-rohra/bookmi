@@ -1,0 +1,75 @@
+{% extends "layout.html" %}
+
+{% block content %}  
+{% if error %}
+  <p class="error">There was an error getting your recommendations</p>
+  {% endif %}
+
+  <h2>Recommended Books</h2>
+  {% if basedOn %}
+<section id="rec_section">
+  <div id="rec-main">
+    <div id="rec-left">
+            <h3>Based on: </h3>
+              <a href="/books/{{ basedOn.ISBN }}">
+                <img class="based-on book-hover" src="{{ basedOn.pic }}" title="{{ basedOn.title }}"></a>
+          <p>{{ basedOn.title }}</p>
+          <p>{% for author in basedOn.authors %}{{ author }}<br>{% endfor %}</p>
+         
+      </div>
+      <div id="rec-right">
+        <ul id="recom-books" class="book-hover-container">
+          {% for item in recommendations %}
+          <li id="div{{ item.volumeInfo.ISBN }}" class="rec list-book-option"><a class="book-hover" href="/books/{{ item.volumeInfo.ISBN }}"><img src="{{ item.volumeInfo.pic }}" title="{{ item.volumeInfo.title }}"></a>
+          <div id="hover-{{ item.volumeInfo.ISBN }}" class="hidden">
+          <p class="title">{{ item.volumeInfo.title }}</p>
+          <p class="author">{{ item.volumeInfo.authors[0] }}</p>
+          </li>
+          {% else %}
+          <p>Add books to your Wishlist for recommendations!</p>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </section>
+  {% endif %}
+  <section id="feed">
+
+    <h2>What's New</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Follower</th>
+          <th>Action</th>
+          <th>Details</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+
+    {% for action in results %}
+      <tr>
+        <td>{{action.follower}}</td>
+        <td>{{action.action}}</td>
+        <td>{{action.details}}</td>
+        <td>{{action.date}}</td>
+      </tr>
+    {% else %}
+      <tr>
+        <td>You have no followers.</td>
+        <td>Or your followers haven't done anything yet!</td>
+        <td>Find some better users to follow in the community tab.</td>
+        <td>It's a great way to keep up to date with what your favourite users
+          are up to.</td>
+      </tr>
+    {% endfor %}
+
+    </table>
+  </section>
+<!-- Display book overlay -->
+<div id='hover-overlay'>
+<p id='hover-overlay-title'>title</p>
+<p id='hover-overlay-author'>author</p>
+</div>
+
+  <script src="/assets/js/hover.js" type="text/javascript" defer></script>
+{% endblock %}

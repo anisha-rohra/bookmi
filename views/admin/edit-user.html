@@ -1,0 +1,103 @@
+{% extends "admin/layout.html" %}
+
+{% block content %}
+
+<section id="user-admin-section">
+
+  <div class="admin-edit-user">
+    <h3 id="admin-user-details">Profile for {{ user.username }}</h3>
+    <form id="your-profile" action="/admin/edit-user?id={{ user.id }}" method="post">
+      <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+      <table class="form-table">
+        <tbody>
+          <tr class="admin-user-form">
+            <th><label for="user_login">User ID</label></th>
+            <td><input type="text" name="user_id" id="user_id" value="{{ user.id }}" class="regular-text" readonly> <span class="description">User ID cannot be changed.</span></td>
+          </tr>
+          <tr class="admin-user-form">
+            <th><label for="username">Username</label></th>
+            <td><input type="text" name="username" id="username" value="{{ user.username }}" class="regular-text" readonly> <span class="description">Usernames cannot be changed.</span></td>
+          </tr>
+          <tr class="admin-user-form">
+            <th><label for="first_name">First Name</label></th>
+            <td><input type="text" name="first_name" id="first_name" value="{{ user.firstname }}" class="regular-text"></td>
+          </tr>
+
+          <tr class="admin-user-form">
+            <th><label for="last_name">Last Name</label></th>
+            <td><input type="text" name="last_name" id="last_name" value="{{ user.lastname }}" class="regular-text"></td>
+          </tr>
+
+          <tr class="admin-user-form">
+            <th><label for="email">Email </label></th>
+            <td><input type="email" name="email" id="email" value="{{ user.email }}" class="regular-text">
+            </td>
+          </tr>
+
+          <tr class="admin-user-form">
+            <th><label for="password">Password</label></th>
+            <td><input type="password" name="password" id="password" value="" class="regular-text"></td>
+          </tr>          
+          <tr class="admin-user-form">
+            <th><label for="pwd_confirm">Confirm password</label></th>
+            <td><input type="password" name="pwd_confirm" id="pwd_confirm" value="" class="regular-text"></td>
+          </tr>
+
+          <tr class="admin-user-form">
+            <th><label for="age">Age </label></th>
+            <td><input type="number" name="age" id="age" value="{{ user.age }}" class="regular-text"></td>
+          </tr>
+
+          <tr class="admin-user-form">
+            <th><label for="gender">Gender</label></th>
+            <td>
+              <select name="gender" id="gender">
+                <option {% if user.gender == "-" %}selected{% endif %}> - </option>
+                <option {% if user.gender == "m" %}selected{% endif %}>m</option>
+                <option {% if user.gender == "f" %}selected{% endif %}>f</option>
+              </select></td>
+            </tr>
+
+            <tr class="admin-user-form">
+              <th><label for="location">Location</label></th>
+              <td><input type="text" name="location" id="location" value="{{ user.location }}" class="regular-text"></td>
+            </tr>
+
+            <tr class="admin-user-form">
+              <th><label for="utype">User Type</label></th>
+              <td>
+                <select name="utype" id="utype">
+                  <option {% if user.utype == "admin" %}selected{% endif %}>admin</option>
+                  <option {% if user.utype == "user" %}selected{% endif %}>user</option>
+                </select>
+              </td>
+            </tr></form>
+
+            <tr class="admin-user-form">
+              <th>Profile Picture</th>
+              <td>
+                <img alt="" src="{% if user.profile_pic %}{{ user.profile_pic }}{% else %}/assets/images/profile_pic.png{% endif %}
+                " id="profile-pic" height="96" width="96">
+                <form id="dispPicForm" enctype="multipart/form-data" action="/upload" method="post" class="upload-file">
+                  <input type="file" name="image" id="image-upload" value="Upload new" accept="image/*">
+                  <label class="upload-label" id="upload-input" for="image-upload">Upload new picture</label>
+                  <input class="upload-label" id="submit-upload" type="submit" name="submit" value="Upload">
+                  <p class="err"> </p>
+                  </form>
+                  <progress max="100" value="0"></progress>
+              </td>
+            </tr>
+            <tr class="admin-user-form">
+            <th><label for="delete">Delete User </label></th>
+              <td><input type="checkbox" name="delete" id="delete"></td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="submit"><input type="submit" name="submit" id="submit" value="Update Profile" form="your-profile"></p>
+    </div>
+  </section>
+
+    <script src="/assets/js/upload.js" type="text/javascript" defer></script>
+    <link href="/assets/css/main_style.css" rel="stylesheet" type="text/css">
+
+  {% endblock %}

@@ -1,0 +1,31 @@
+<tr>
+	<td class="reviewer-username">{{ review.username }}</td>
+	<td class="reviewer-message">{{ review.message }}</td>
+	<td class="reviewer-rating">
+		{% if review.rating >= 1 %}
+		<img class="star" src="/assets/images/filled_star.png">
+		{% else %}
+		<img class="star" src="/assets/images/star.png">
+		{% endif %}
+		{% if review.rating >= 2 %}
+		<img class="star" src="/assets/images/filled_star.png">
+		{% else %}
+		<img class="star" src="/assets/images/star.png">
+		{% endif %}
+		{% if review.rating >= 3 %}
+		<img class="star" src="/assets/images/filled_star.png">
+		{% else %}
+		<img class="star" src="/assets/images/star.png">
+		{% endif %}
+		{% if review.rating >= 4 %}
+		<img class="star" src="/assets/images/filled_star.png">
+		{% else %}
+		<img class="star" src="/assets/images/star.png">
+		{% endif %}
+		{% if review.rating >= 5 %}
+		<img class="star" src="/assets/images/filled_star.png">
+		{% else %}
+		<img class="star" src="/assets/images/star.png">
+		{% endif %}
+	</td>
+</tr>

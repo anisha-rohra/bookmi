@@ -1,0 +1,59 @@
+{% extends "admin/layout.html" %}
+
+{% block content %}
+
+<section id="user-admin-section">
+
+  {% if err %}
+  <p class="error">{{ err }}</p>
+  {% endif %}
+
+  <div class="header-center">
+    <h3>User Management</h3>
+    <form id="search-form" name="search-form" method="get" action='/admin/users?search='>
+      <input id="search-field" type="search" name="search" class="search-admin" placeholder="Search" required>
+      <input type="submit" id="submit-search" class="submit" value="Search Users">
+    </form>
+    <table>
+      <thead>
+        <tr>
+          <th class="admin-user-id">ID</th>
+          <th class="admin-user-user">Username</th>
+          <th class="admin-user-name">Name</th>
+          <th class="admin-user-email">Email</th>
+          <th class="admin-user-type">User Type</th>
+          <th class="admin-user-age">Age</th>
+          <th class="admin-user-gender">Gender</th>
+          <th class="admin-user-loc">Location</th>
+          <th class="admin-user-joined">Created</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for user in users %}
+        <tr class="user-mgt">
+          <td class="admin-user-id"><p>{{ user.id }}</p></td>
+          <td class="admin-user-user"><a href="/admin/edit-user?id={{ user.id }}"><p>{{ user.username }}</p></a></td>
+          <td class="admin-user-name"><p>{{ user.firstname }} {{ user.lastname }}</p></td>
+          <td class="admin-user-email"><p>{{ user.email }}</p></td>
+          <td class="admin-user-type"><p>{{ user.user_type }}</p></td>
+          <td class="admin-user-age"><p>{{ user.age }}</p></td>
+          <td class="admin-user-gender"><p>{{ user.gender }}</p></td>
+          <td class="admin-user-loc"><p>{{ user.location }}</p></td>
+          <td class="admin-user-joined"><p>{{ user.created }}</p></td>
+        </tr>
+
+        {% else %}
+        <tr><p>No users found</p>
+          {% endfor %}
+        </tbody>
+      </table>
+      {% if prev >= 0 %}
+      <a class="prev" href="/admin/users?p={{ prev }}">Prev</a>
+      {% endif %}
+      {% if next > 0 %}
+      <a class="next" href="/admin/users?p={{ next }}">Next</a>
+      {% endif %}
+    </div>
+  </section>
+
+  {% endblock %}

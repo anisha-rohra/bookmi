@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<section id="community_section">
+
+  <h2>Community</h2>
+
+  <h3>Search Users</h3>
+  <form action='/community' method="get">
+    <input type="hidden" name="_csrf" value="{{ csrfToken }}">  
+    <input type="search" id="user_search" placeholder="Username" name="search" required>
+    <input type="submit" id="user_submit" value="Search" required>
+  </form>
+
+  {% if show %}
+  <div id="search-results">
+
+    {% for result in searches %}
+      <a href="/user{{result.id}}">
+        <div class="comm-user">
+          <img src="{{result.profile_pic}}" class="comm-pic">
+          <p class="comm-name"><strong>Name: </strong>{{result.firstname}} {{result.lastname}}<br>
+          <strong>Username: </strong>{{result.username}}</p>
+        </div>
+      </a>
+    {% else %}
+      <p>The user you are searching for could not be found.</p>
+    {% endfor %}
+
+  </div>
+  {% endif %}
+
+  <section class="follow-sec">
+  <h3>Currently Following</h3>
+  {% for user in followings %}
+    <a href="/user{{ user.id }}">
+      <div class="comm-user">
+        <img src="{{ user.profile_pic }}" class="comm-pic">
+        <p class="comm-name">{{ user.username }}</p>
+      </div>
+    </a>
+  {% else %}
+      <li>You are currently not following anyone.</li>
+  {% endfor %}
+  </section>
+
+  <section class="follow-sec">
+  <h3>Followed By</h3>
+  {% for user in followers %}
+    <a href="/user{{ user.id }}">
+      <div class="comm-user">
+        <img src="{{ user.profile_pic }}" class="comm-pic">
+        <p class="comm-name">{{ user.username }}</p>
+      </div>
+    </a>
+  {% else %}
+      <li>You currently have no followers.</li>
+  {% endfor %}
+  </section>
+</section>
+
+{% endblock %}

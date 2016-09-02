@@ -1,0 +1,43 @@
+<!DOCTYPE>
+<html>
+
+<head>
+    <link href="/assets/css/login_style.css" rel="stylesheet" type="text/css">
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js" rel="script" type="text/javascript" defer></script>
+    <script src="/assets/js/login_script.js" rel="script" type="text/javascript" defer></script>
+    <meta name="google-signin-client_id" content="TODOLATER.apps.googleusercontent.com">
+    <link href='https://fonts.googleapis.com/css?family=Gentium+Book+Basic:700,400|PT+Sans:400,400italic,700' rel='stylesheet' type='text/css'>
+
+    <title>Bookmi Administration</title>
+</head>
+
+<body>
+  <div id="back">
+    <div id="page-1">
+        <header id="header-top">
+            <h1>Bookmi Admin</h1>
+        </header>
+        <div class="form">
+        <input type="hidden" name="_csrf" value="{{ csrfToken }}">            
+            {% if error %}
+            <p class="error">{{ error }}</p>
+            {% endif %}
+            <form method="post" action="/admin/signin" id="form-login">
+                <input type="text" id="sign-in-username" name="username" placeholder="Username" required>
+                <input type="password" id="sign-in-password" name="password" placeholder="Password" required>
+                <button type="submit" id="sign_in">Login</button>
+                <div id="third-party">
+                    <p>Sign in with:</p>
+                    <img src="/assets/images/google.png">
+                    <img src="/assets/images/facebook.png">
+                </div>
+            </form>
+        </div>
+        <header id="header-bottom">
+        </header>
+    </div>
+  </div>
+
+</body>
+
+</html>
